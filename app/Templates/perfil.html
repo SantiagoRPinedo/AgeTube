@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container" id="perfil" >
+  <div class="row " style="display: flexbox; margin: 0 auto;">
+    <div class="row align-items-start">
+      <div class=" col-3 text-center">
+        <div class="card" style="width: 18rem;">
+          <img
+            src="https://marketplace.canva.com/EAEj17Y_k_k/2/0/1600w/canva-amarillo-y-negro-gamer-desgastado-imagen-de-perfil-de-twitch-41B81rUGLAg.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Hugo Torres Morales</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-9 card">
+        <img src="https://i.pinimg.com/600x315/19/05/74/19057412a4c1db3184ecf99bd59b0261.jpg" class="img-fluid"
+          style="width: 100%;" alt="portada">
+      </div>
+    </div>
+    <div class="col-3 contenedor-detalles">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Detalles</h5>
+          <p class="card-text">Vive en Toluca de Lerdo</p>
+          <p class="card-text">De Toluca de Lerdo</p>
+          <p class="card-text">Estudio en Universidad Autónoma del Estado de México</p>
+          <p class="card-text">Se unió en Mayo de 2023</p>
+
+        </div>
+      </div>
+    </div>
+    <div class="col contenedor-detalles">
+      <h5 class="text-center">Tus Publicaciones</h5>
+      {% for publicacion in publicaciones%}
+      <div class="pub-adultos">
+        {% if publicacion['tipo'] == "texto" %}
+        <div class="container-titulo-pub">
+          <p class="titulo-pub">{{ publicacion['titulo'] }}</p>
+        </div>
+        <div class="container-contenido-pub">
+          <div class="contenido-pub">
+            <h6>
+              {{ publicacion['contenido'] }}
+            </h6>
+          </div>
+        </div>
+        <div class="footer-pub">
+          <p>By: @{{ publicacion['username'] }}</p>
+        </div>
+        {% endif %}
+        {% if publicacion['tipo'] == "cita" %}
+        <div class="container-titulo-pub">
+          <h1 class="titulo-pub">By: {{ publicacion['titulo'] }}</h1>
+        </div>
+        <div class="container-contenido-pub">
+          <div class="contenido-pub">
+            <h6 style="font-size: large; text-decoration: wavy; font-style: italic;">
+              {{ publicacion['contenido'] }}
+            </h6>
+          </div>
+        </div>
+        <div class="footer-pub">
+          <p>By: @{{ publicacion['username'] }}</p>
+        </div>
+        {% endif %}
+
+        {% if publicacion['tipo'] == "enlace" %}
+        <div class="container-titulo-pub">
+          <h1 class="titulo-pub">{{ publicacion['titulo'] }}</h1>
+        </div>
+        <div class="container-contenido-pub">
+          <div class="contenido-pub">
+            <a href="{{ publicacion['contenido'] }}" class="card-link" target="_blank">Algun lugar en internet...</a>
+          </div>
+        </div>
+        <div class="footer-pub">
+          <p>By: @{{ publicacion['username'] }}</p>
+        </div>
+        {% endif %}
+
+        {% if publicacion['tipo'] == "imagen" %}
+        <div class="comunidad-card" id="imgmuro">
+          <h3>{{ publicacion['titulo'] }}</h3>
+          <img src="{{ publicacion['contenido'] }}" class="com">
+          <div class="footer-pub">
+            <p>By: @{{ publicacion['username'] }}</p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {%endfor%}
+      <!--    TERMINA ZONA DE PUBLICACIONES REALIZADAS     -->
+    </div>
+  </div>
+</div>
+</div>
+
+{%endblock%}

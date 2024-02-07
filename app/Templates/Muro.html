@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="container">
+  <div class="row align-items-start" style="margin: 0 auto;">
+    <div class="col" id="colpub">
+      <div class="publicaciones">
+        <!--    INICIA ZONA DE CREACION DE NUEVA PUBLICACIÓN     -->
+        <div class="publicacionhub">
+          <div class="icono-card" id="texto">
+            <img class="icono" id="texto" name="texto" src="static/texto.png" alt=" texto ">
+            <div class="icono-overlay">
+              <p class="icono-p" style="text-align: center;">Texto</p>
+            </div>
+          </div>
+          <div class="icono-card" id="imagen">
+            <img class="icono" id="imagen" src="static/imagen.png" alt=" texto ">
+            <div class="icono-overlay">
+              <p class="icono-p" style="text-align: center;">Imagen</p>
+            </div>
+          </div>
+          <div class="icono-card" id="cita">
+            <img class="icono" id="cita" src="static/cita.png" alt=" texto ">
+            <div class="icono-overlay">
+              <p class="icono-p" style="text-align: center;">Cita</p>
+            </div>
+          </div>
+          <div class="icono-card" id="enlace">
+            <img class="icono" id="enlace" src="static/enlace.png" alt=" texto ">
+            <div class="icono-overlay">
+              <p class="icono-p" style="text-align: center;">Enlace</p>
+            </div>
+          </div>
+        </div>
+        <!--    INICIA ZONA DE PUBLICACIONES REALIZADAS     -->
+        {% for publicacion in publicaciones%}
+        <div class="pub-adultos">
+          {% if publicacion['tipo'] == "texto" %}
+          <div class="container-titulo-pub">
+            <p class="titulo-pub">{{ publicacion['titulo'] }}</p>
+          </div>
+          <div class="container-contenido-pub">
+            <div class="contenido-pub">
+              <h6>
+                {{ publicacion['contenido'] }}
+              </h6>
+            </div>
+          </div>
+          <div class="footer-pub">
+            <p>By: @{{ publicacion['username'] }}</p>
+          </div>
+          {% endif %}
+          {% if publicacion['tipo'] == "cita" %}
+          <div class="container-titulo-pub">
+            <h1 class="titulo-pub">By: {{ publicacion['titulo'] }}</h1>
+          </div>
+          <div class="container-contenido-pub">
+            <div class="contenido-pub">
+              <h6 style="font-size: large; text-decoration: wavy; font-style: italic;">
+                {{ publicacion['contenido'] }}
+              </h6>
+            </div>
+          </div>
+          <div class="footer-pub">
+            <p>By: @{{ publicacion['username'] }}</p>
+          </div>
+          {% endif %}
+
+          {% if publicacion['tipo'] == "enlace" %}
+          <div class="container-titulo-pub">
+            <h1 class="titulo-pub">{{ publicacion['titulo'] }}</h1>
+          </div>
+          <div class="container-contenido-pub">
+            <div class="contenido-pub">
+              <a href="{{ publicacion['contenido'] }}" class="card-link" target="_blank">Algun lugar en internet...</a>
+            </div>
+          </div>
+          <div class="footer-pub">
+            <p>By: @{{ publicacion['username'] }}</p>
+          </div>
+          {% endif %}
+
+          {% if publicacion['tipo'] == "imagen" %}
+          <div class="comunidad-card" id="imgmuro">
+            <h3>{{ publicacion['titulo'] }}</h3>
+            <img src="{{ publicacion['contenido'] }}" class="com">
+            <div class="footer-pub">
+              <p>By: @{{ publicacion['username'] }}</p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {%endfor%}
+        <!--    TERMINA ZONA DE PUBLICACIONES REALIZADAS     -->
+      </div>
+    </div>
+    <div class="col" id="ColAv">
+      <!--    INICIA LA BARRA LATERAL IZQUIERDA, NOTICIAS RECIENTES     -->
+      <div class="aviso">
+        <div>
+          <p id="leyenda">AgeTube es una red social donde el contenido
+            es clasificado segun la edad, asi que bienvenido!
+            Si eres mayor de edad, disfruta de contenido sin censura
+            Si eres menor de edad te invitamos a socializar y disfrutar de contenido
+            adecuado para tu edad.</p>
+        </div>
+        <hr>
+        <div>
+          {% if (legal == 0)%}
+          <h6>Disfruta de Contenido destinado solo para publico de tu rango de edad</h6>
+          {%else%}
+          <h6>Enterate de las noticias más chidas para toda la comunidad UwU</h6>
+          {%endif%}
+        </div>
+        <hr>
+        <h5 class="card-title" style="text-align: center;">Novedades</h5>
+        <br>
+        <div class="card" id="card" style="width: 100%;">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-body-secondary">Drake Bell desaparecido</h6>
+            <p class="card-text">Se reporta que el actor Drake Bell desaparecio tras salir de casa en su BMW</p>
+            <a href="https://elpais.com/gente/2023-04-13/drake-bell-esta-a-salvo-despues-de-que-la-policia-alertase-de-que-estaba-desaparecido-y-en-peligro.html"
+              class="card-link" target="_blank">Checa más Aqui</a>
+            <a href="comunidad" class="card-link">Chimecitos a tu gusto</a>
+          </div>
+        </div>
+        <br>
+        <div class="card" id="card" style="width: 100%;">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-body-secondary">Nueva temporada de Brawls Stars!!</h6>
+            <p class="card-text">Ya inicio la nueva temporada de BrawlStar, ¿conoces al nuevo brawler cromatico?</p>
+            <a href="https://www.youtube.com/watch?v=iQwhRLVIjwU&t=1s&ab_channel=BrawlStars" class="card-link"
+              target="_blank">Checa más Aqui</a>
+            <a href="comunidad" class="card-link">Chimecitos a tu gusto</a>
+          </div>
+        </div>
+        <div class="card" id="card" style="width: 100%;">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-body-secondary">Popocatepetl en fase Amarillo 3</h6>
+            <p class="card-text">Nuevas expulsiones del volcan y puebla amanece bajo mucha niebla de cenizas, se
+              recomienda el uso de cubrebocas de nuevo</p>
+            <a href="https://cnnespanol.cnn.com/video/explosion-volcan-popocatepetl-ceniza-original-pkg-redaccion-mexico/"
+              class="card-link" target="_blank">Checa más Aqui</a>
+            <a href="comunidad" class="card-link">Chimecitos a tu gusto</a>
+          </div>
+        </div>
+      </div>
+      <!--    TERMINA LA BARRA LATERAL IZQUIERDA, NOTICIAS RECIENTES     -->
+    </div>
+  </div>
+
+  <!--ZONA DE MODALES PARA LOS DIVERSOS TIPOS DE PUBLICACION-->
+  <!-- Modal de Texto -->
+  <div id="modalTexto" class="modal-muro">
+    <div class="modal-content-m">
+      <!-- Contenido del modal de Texto -->
+      <div class="form-pub">
+        <h3 class="titulo">Ufff chismecito :9</h3>
+        <form method="POST">
+          <input type="text" class="form-control" id="validationServer01" placeholder="Titulo" name="titulo" required>
+          <div class="valid-feedback">
+            chi
+          </div>
+          <textarea class="form-control" id="validationServer01" name="contenido"
+            placeholder="Comparte tus mas profundos pensamientos!!"></textarea>
+          <br>
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="ilegal"
+            unchecked>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Para Mayores de Edad</label>
+          <br>
+          <button type="submit" class="btn-post">Publicar</button>
+          <input type="text" name="tipo" value="texto" style="display: none;" required>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Imagen -->
+  <div id="modalImagen" class="modal-muro">
+    <div class="modal-content-m">
+      <!-- Contenido del modal de Texto -->
+      <div class="form-pub">
+        <h3 class="titulo">Agrega un poco de vida a AgeTube ^U^</h3>
+        <form method="POST">
+          <input type="text" class="form-control" id="validationServer01" placeholder="Titulo" name="titulo" required>
+          <div class="valid-feedback">
+            chi
+          </div>
+          <label>URL de la imagen</label>
+          <input type="url" class="form-control" id="validationServer01" name="contenido">
+          <br>
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="ilegal"
+            unchecked>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Para Mayores de Edad</label>
+          <br>
+          <button type="submit" class="btn-post">Publicar</button>
+          <input type="text" name="tipo" value="imagen" style="display: none;" required>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Cita -->
+  <div id="modalCita" class="modal-muro">
+    <!-- Contenido del modal de Cita -->
+    <div class="modal-content-m">
+      <div class="form-pub">
+        <h3 class="titulo">Sorprende al mundo con tu intelecto :0</h3>
+        <form method="POST">
+          <input type="text" class="form-control" id="validationServer01" placeholder="Esto lo dijo..." name="titulo"
+            required>
+          <div class="valid-feedback">
+            chi
+          </div>
+          <textarea class="form-control" id="exampleFormControlTextarea1" name="contenido"
+            placeholder="La radiación que queda del Big Bang es la misma de la de tu microondas pero mucho menos fuerte."></textarea>
+          <br>
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="ilegal"
+            unchecked>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Para Mayores de Edad</label>
+          <br>
+          <button type="submit" class="btn-post">Publicar</button>
+          <input type="text" name="tipo" value="cita" style="display: none;" required>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Enlace -->
+  <div id="modalEnlace" class="modal-muro">
+    <!-- Contenido del modal de Enlace -->
+    <div class="modal-content-m">
+      <div class="form-pub">
+        <h3 class="titulo">Solo pega el enlace y listo 7u7r</h3>
+        <form method="POST">
+          <input type="text" class="form-control" id="validationServer01" placeholder="Que nos vas a mostrar?"
+            name="titulo" required>
+          <div class="valid-feedback">
+            chi
+          </div>
+          <input type="url" class="form-control" id="validationServer01" name="contenido"
+            placeholder="http:algunsitioasombroso.com">
+          <br>
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="ilegal"
+            unchecked>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Para Mayores de Edad</label>
+          <br>
+          <button type="submit" class="btn-post">Publicar</button>
+          <input type="text" name="tipo" value="enlace" style="display: none;" required>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Evento de clic para el ícono de Texto
+      $('#texto').click(function () {
+        $('#modalTexto').show(); // Mostrar el modal de Texto
+      });
+
+      // Evento de clic para el ícono de Imagen
+      $('#imagen').click(function () {
+        $('#modalImagen').show(); // Mostrar el modal de Imagen
+      });
+
+      // Evento de clic para el ícono de Cita
+      $('#cita').click(function () {
+        $('#modalCita').show(); // Mostrar el modal de Cita
+      });
+
+      // Evento de clic para el ícono de Enlace
+      $('#enlace').click(function () {
+        $('#modalEnlace').show(); // Mostrar el modal de Enlace
+      });
+
+      // Evento de clic para cerrar el modal al hacer clic fuera de él
+      $(document).click(function (event) {
+        if ($(event.target).hasClass('modal-muro')) {
+          $('.modal-muro').hide();
+        }
+      });
+    });
+
+  </script>
+</div>
+{%endblock%}

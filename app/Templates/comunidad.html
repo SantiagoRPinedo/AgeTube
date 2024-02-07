@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<div class="comunidad" >
+  <div class="fila">
+    {% for comunidad in comunidades %}
+    <div class="comunidad-card">
+      <img src="{{ comunidad['urlimg'] }}" class="com">
+      <div class="comunidad-overlay">
+        <h3 class="comunidad-name">{{ comunidad['nombre'] }}</h3>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Modal -->
+  <div id="modalCrearComunidad" class="modal">
+    <div class="limites">
+      <div class="modal-content">
+        <h2>Crear una comunidad</h2>
+        <form method="post">
+          <div>
+            <label for="nombre">Nombre de la comunidad:</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+          </div>
+          <div>
+            <label for="urlimagen">Imagen de la comunidad</label>
+            <input type="url" name="urlimagen" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" placeholder="Copia y pega la URl de una imagen que te guste :)">
+          </div>
+          <br>
+          <div class="col">
+            <button type="submit" class="modalbtn" name="comunidad" id="comunidad">Crear comunidad</button>
+          </div>
+          <button type="button" class="modalbtn" id="btnCerrarModal" style="display: none;">Cerrar</button>
+        </form>
+      </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

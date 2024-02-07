@@ -1,0 +1,11 @@
+python -m venv venv
+. venv/Scripts/activate
+$env:FLASK_APP= 'app'      
+$env:FLASK_DEBUG = "True" 
+$env:SECRET_KEY="mikey"
+$env:FLASK_DATABASE_HOST = "localhost"
+$env:FLASK_DATABASE_USER = "root" 
+$env:FLASK_DATABASE = "asso"
+$env:FLASK_DATABASE_PASSWORD = "1999"
+
+
