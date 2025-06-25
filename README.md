@@ -27,4 +27,4 @@ AgeTube es un prototipo funcional que explora la creación de una plataforma de 
 `Python` `Flask` `FaceIoApi` `SQL` `SQLite` `Heroku` `Bases de datos` `Hash Tables` `Redes sociales` `Diseño Web` `Visión por computadora`
 
 ---
-> [Ver este proyecto en el portafolio principal](https://santiagopinedodev.com/#proyectos-personales)
+
